@@ -14,7 +14,7 @@ public class Empty extends TownCell {
      * @return cell state
      */
     @Override
-    public State who () {
+    public State who() {
         return State.EMPTY;
     }
 

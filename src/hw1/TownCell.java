@@ -46,19 +46,18 @@ public abstract class TownCell {
 		nCensus[OUTAGE] = 0; 
 		nCensus[STREAMER] = 0;
 
-		for (int i = 0; i < plain.getWidth(); i++) {
-			//Sum of all the different cell-types currently on the grid
-			for (int j = 0; j < plain.getLength(); j++) {
-				if (plain.grid[i][j].who() == State.CASUAL) {
-					nCensus[CASUAL] = nCensus[CASUAL] + 1;
-				} else if (plain.grid[i][j].who() == State.STREAMER) {
-					nCensus[STREAMER] = nCensus[STREAMER] + 1;
-				} else if (plain.grid[i][j].who() == State.RESELLER) {
-					nCensus[RESELLER] = nCensus[RESELLER] + 1;
-				} else if (plain.grid[i][j].who() == State.EMPTY) {
-					nCensus[EMPTY] = nCensus[EMPTY] + 1;
-				} else if (plain.grid[i][j].who() == State.OUTAGE) {
-					nCensus[OUTAGE] = nCensus[OUTAGE] + 1;
+		for (int i = col - 1; i <= (col + 1); i++) {
+			for (int j = row - 1; j <= (row + 1); j++) {
+				if (plain.grid[row][col].who() == State.CASUAL){
+					nCensus[CASUAL] += 1;
+				} else if (plain.grid[row][col].who() == State.STREAMER){
+					nCensus[STREAMER] += 1;
+				} else if (plain.grid[row][col].who() == State.RESELLER){
+					nCensus[RESELLER] += 1;
+				} else if (plain.grid[row][col].who() == State.EMPTY){
+					nCensus[EMPTY] += 1;
+				} else if (plain.grid[row][col].who() == State.OUTAGE){
+					nCensus[OUTAGE] += 1;
 				}
 			}
 		}

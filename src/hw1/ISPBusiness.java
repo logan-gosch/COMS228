@@ -1,5 +1,6 @@
 package hw1;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -28,7 +29,7 @@ public class ISPBusiness {
 	 * @return
 	 */
 	public static int getProfit(Town town) {
-		//TODO: Write/update your code here.
+
 		return 0;
 	}
 	
@@ -53,10 +54,11 @@ public class ISPBusiness {
 	 * @param args
 	 * 
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		//TODO: Write your code here.
 		Scanner userInput = new Scanner(System.in);
 		int userGridChoice = 0;
+		Town t1 = new Town(1, 1);
 
 		while (true) {
 			System.out.println("How to populate grid (type 1 or 2):\n 1: from a file.\n 2: randomly with seed");
@@ -72,7 +74,22 @@ public class ISPBusiness {
 
 		if (userGridChoice == 1) {
 			System.out.println("Enter file name:");
-			Town t1 = new Town(userInput.next());
+			try {
+				t1 = new Town(userInput.next());
+			} catch (FileNotFoundException ignored) {}
+		} else {
+			System.out.println("Enter: [rows] [columns] [seed]");
+			try {
+				int rows = userInput.nextInt();
+				int columns = userInput.nextInt();
+				int seed = userInput.nextInt();
+				t1 = new Town(rows, columns);
+				t1.randomInit(seed);
+			} catch (InputMismatchException e) {
+				throw new InputMismatchException();
+			}
 		}
+
+		System.out.print(t1);
 	}
 }

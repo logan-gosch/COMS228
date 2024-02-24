@@ -26,6 +26,13 @@ public class Streamer extends TownCell {
      */
     @Override
     public TownCell next(Town tNew) {
-        return null;
+        if (nCensus[RESELLER] >= 1) {
+            return new Outage(tNew, tNew.getLength(), tNew.getWidth());
+        } else if (nCensus[OUTAGE] >= 1) {
+            return new Empty(tNew, tNew.getLength(), tNew.getWidth());
+        } else if (nCensus[OUTAGE] + nCensus[EMPTY] <= 1) {
+            return new Reseller(tNew, tNew.getLength(), tNew.getWidth());
+        }
+        return new Streamer(tNew, tNew.getLength(), tNew.getWidth());
     }
 }

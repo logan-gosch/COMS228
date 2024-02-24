@@ -2,6 +2,7 @@ package hw1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.StringReader;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,11 +25,12 @@ public class Town {
 	public Town(int length, int width) {
 		this.length = length;
 		this.width = width;
+		grid = new TownCell[this.length][this.width];
 	}
 	
 	/**
 	 * Constructor to be used when user wants to populate grid based on a file.
-	 * Please see that it simple throws FileNotFoundException exception instead of catching it.
+	 * Please see that it simply throws FileNotFoundException exception instead of catching it.
 	 * Ensure that you close any resources (like file or scanner) which is opened in this function.
 	 * @param inputFileName
 	 * @throws FileNotFoundException
@@ -40,18 +42,33 @@ public class Town {
 		Scanner lineScanner = new Scanner(line);
 		length = lineScanner.nextInt();
 		width = lineScanner.nextInt();
-
-
-
 		grid = new TownCell[length][width];
 
-		for (int i = 0; i < length; i++) {
+		// seed was included in the file user entry option in the spec,
+		// but I do not believe it's necessary for this path (design wise)...
+		int seed = lineScanner.nextInt();
 
-			for (int j = 0; j < width; j++) {
 
+		for (int i = 0; i < width; i++) {
+			line = fileScanner.nextLine();
+			lineScanner = new Scanner(line);
+			for (int j = 0; j < length; j++) {
+				String cell = lineScanner.next();
+				if (cell.equals("C")) {
+					grid[i][j] = new Casual(this, i, j);
+				} else if (cell.equals("S")) {
+					grid[i][j] = new Streamer(this, i, j);
+				} else if (cell.equals("R")) {
+					grid[i][j] = new Reseller(this, i, j);
+				} else if (cell.equals("E")) {
+					grid[i][j] = new Empty(this, i, j);
+				} else if (cell.equals("O")) {
+					grid[i][j] = new Outage(this, i, j);
+				}
 			}
 		}
 
+		lineScanner.close();
 		fileScanner.close();
 	}
 	
@@ -77,7 +94,23 @@ public class Town {
 	 */
 	public void randomInit(int seed) {
 		Random rand = new Random(seed);
-		//TODO: Write your code here.
+
+		for (int i = 0; i < length; i++) {
+			for (int j = 0; j < width; j++) {
+				int newRand = rand.nextInt(5);
+				if (newRand == 0) {
+					grid[i][j] = new Casual(this, i, j);
+				} else if (newRand == 1) {
+					grid[i][j] = new Streamer(this, i, j);
+				} else if (newRand == 2) {
+					grid[i][j] = new Reseller(this, i, j);
+				} else if (newRand == 3) {
+					grid[i][j] = new Empty(this, i, j);
+				} else {
+					grid[i][j] = new Outage(this, i, j);
+				}
+			}
+		}
 	}
 	
 	/**
@@ -104,7 +137,7 @@ public class Town {
 					s += "O ";
 				}
 			}
-			System.out.println();
+			s += "\n";
 		}
 
 		return s;
