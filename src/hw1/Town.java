@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
+import hw1.State;
 
 /**
  *  @author Logan Gosch
- *
  */
 public class Town {
 	
@@ -24,8 +24,6 @@ public class Town {
 	public Town(int length, int width) {
 		this.length = length;
 		this.width = width;
-
-
 	}
 	
 	/**
@@ -48,8 +46,6 @@ public class Town {
 		grid = new TownCell[length][width];
 
 		for (int i = 0; i < length; i++) {
-			line = fileScanner.nextLine();
-			lineScanner = new Scanner(line);
 
 			for (int j = 0; j < width; j++) {
 
@@ -64,8 +60,7 @@ public class Town {
 	 * @return
 	 */
 	public int getWidth() {
-		//TODO: Write/update your code here.
-		return 0;
+		return width;
 	}
 	
 	/**
@@ -73,8 +68,7 @@ public class Town {
 	 * @return
 	 */
 	public int getLength() {
-		//TODO: Write/update your code here.
-		return 0;
+		return length;
 	}
 
 	/**
@@ -95,7 +89,24 @@ public class Town {
 	@Override
 	public String toString() {
 		String s = "";
-		//TODO: Write your code here.
+
+		for (int i = 0; i < width; i++){
+			for (int j = 0; j < length; j++) {
+				if (grid[i][j].who() == State.CASUAL) {
+					s += "C ";
+				} else if (grid[i][j].who() == State.STREAMER) {
+					s += "S ";
+				} else if (grid[i][j].who() == State.RESELLER) {
+					s += "R ";
+				} else if (grid[i][j].who() == State.EMPTY) {
+					s += "E ";
+				} else if (grid[i][j].who() == State.OUTAGE) {
+					s += "O ";
+				}
+			}
+			System.out.println();
+		}
+
 		return s;
 	}
 }

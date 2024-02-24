@@ -2,9 +2,8 @@ package hw1;
 
 /**
  * 
- * @author <<Write your name here>>
+ * @author Logan Gosch
  *	Also provide appropriate comments for this class
- *
  */
 public abstract class TownCell {
 
@@ -32,7 +31,7 @@ public abstract class TownCell {
 	}
 	
 	/**
-	 * Checks all neigborhood cell types in the neighborhood.
+	 * Checks all neighborhood cell types in the neighborhood.
 	 * Refer to homework pdf for neighbor definitions (all adjacent
 	 * neighbors excluding the center cell).
 	 * Use who() method to get who is present in the neighborhood
@@ -45,9 +44,24 @@ public abstract class TownCell {
 		nCensus[EMPTY] = 0; 
 		nCensus[CASUAL] = 0; 
 		nCensus[OUTAGE] = 0; 
-		nCensus[STREAMER] = 0; 
+		nCensus[STREAMER] = 0;
 
-		//TODO: Write your code here.
+		for (int i = 0; i < plain.getWidth(); i++) {
+			//Sum of all the different cell-types currently on the grid
+			for (int j = 0; j < plain.getLength(); j++) {
+				if (plain.grid[i][j].who() == State.CASUAL) {
+					nCensus[CASUAL] = nCensus[CASUAL] + 1;
+				} else if (plain.grid[i][j].who() == State.STREAMER) {
+					nCensus[STREAMER] = nCensus[STREAMER] + 1;
+				} else if (plain.grid[i][j].who() == State.RESELLER) {
+					nCensus[RESELLER] = nCensus[RESELLER] + 1;
+				} else if (plain.grid[i][j].who() == State.EMPTY) {
+					nCensus[EMPTY] = nCensus[EMPTY] + 1;
+				} else if (plain.grid[i][j].who() == State.OUTAGE) {
+					nCensus[OUTAGE] = nCensus[OUTAGE] + 1;
+				}
+			}
+		}
 
 	}
 
