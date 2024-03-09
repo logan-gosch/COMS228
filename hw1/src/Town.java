@@ -1,5 +1,3 @@
-package hw1;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.StringReader;
@@ -14,7 +12,7 @@ import hw1.State;
 public class Town {
 	
 	private int length, width;  //Row and col (first and second indices)
-	public TownCell[][] grid;
+	public hw1.TownCell[][] grid;
 	
 	/**
 	 * Constructor to be used when user wants to generate grid randomly, with the given seed.
@@ -25,7 +23,7 @@ public class Town {
 	public Town(int length, int width) {
 		this.length = length;
 		this.width = width;
-		grid = new TownCell[this.length][this.width];
+		grid = new hw1.TownCell[this.length][this.width];
 	}
 	
 	/**
@@ -42,7 +40,7 @@ public class Town {
 		Scanner lineScanner = new Scanner(line);
 		length = lineScanner.nextInt();
 		width = lineScanner.nextInt();
-		grid = new TownCell[length][width];
+		grid = new hw1.TownCell[length][width];
 
 		// seed was included in the file user entry option in the spec,
 		// but I do not believe it's necessary for this path (design wise)...

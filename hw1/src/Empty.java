@@ -1,11 +1,9 @@
-package hw1;
-
 /**
  * @author Logan Gosch
  */
-public class Reseller extends TownCell {
+public class Empty extends hw1.TownCell {
 
-    public Reseller(Town p, int r, int c) {
+    public Empty(hw1.Town p, int r, int c) {
         super(p, r, c);
     }
 
@@ -14,19 +12,18 @@ public class Reseller extends TownCell {
      * @return cell state
      */
     @Override
-    public State who() {
-        return State.RESELLER;
+    public hw1.State who() {
+        return hw1.State.EMPTY;
     }
 
     /**
      * Determines the change of the cell type
-     * based on the specific rules for: RESELLER
+     * based on the specific rules for: EMPTY
      * @param tNew: town of the next cycle
      * @return
      */
     @Override
-    public TownCell next(Town tNew) {
+    public hw1.TownCell next(hw1.Town tNew) {
         return null;
     }
-
 }

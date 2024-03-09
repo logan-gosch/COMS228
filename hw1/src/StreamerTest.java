@@ -1,5 +1,3 @@
-package hw1;
-
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -11,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class StreamerTest {
 
-    Town testTown = new Town("ISP4x4.txt");
+    hw1.Town testTown = new hw1.Town("ISP4x4.txt");
 
     StreamerTest() throws FileNotFoundException {}
 

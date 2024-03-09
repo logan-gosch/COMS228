@@ -1,5 +1,3 @@
-package hw1;
-
 /**
  * 
  * Different type of cell customers and state.

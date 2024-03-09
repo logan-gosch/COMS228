@@ -1,10 +1,9 @@
-package hw1;
-
 /**
  * @author Logan Gosch
  */
-public class Outage extends TownCell {
-    public Outage(Town p, int r, int c) {
+public class Reseller extends hw1.TownCell {
+
+    public Reseller(hw1.Town p, int r, int c) {
         super(p, r, c);
     }
 
@@ -13,17 +12,18 @@ public class Outage extends TownCell {
      * @return cell state
      */
     @Override
-    public State who() {
-        return State.OUTAGE;
+    public hw1.State who() {
+        return hw1.State.RESELLER;
     }
 
     /**
      * Determines the change of the cell type
-     * based on the specific rules for: OUTAGE
+     * based on the specific rules for: RESELLER
      * @param tNew: town of the next cycle
      * @return
      */
-    public TownCell next(Town tNew) {
+    @Override
+    public hw1.TownCell next(hw1.Town tNew) {
         return null;
     }
 

@@ -1,5 +1,3 @@
-package hw1;
-
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -9,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author Logan Gosch
  */
-class OutageTest {
+class EmptyTest {
 
-    Town testTown = new Town("ISP4x4.txt");
+    hw1.Town testTown = new hw1.Town("ISP4x4.txt");
 
-    OutageTest() throws FileNotFoundException {}
+    EmptyTest() throws FileNotFoundException {}
 
     @Test
     void whoTest() {
-        assert(testTown.grid[0][0].who() == State.OUTAGE);
+        assert(testTown.grid[1][0].who() == hw1.State.EMPTY);
     }
 }

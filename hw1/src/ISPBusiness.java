@@ -1,4 +1,3 @@
-package hw1;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,8 +16,8 @@ public class ISPBusiness {
 	 * @param tOld: old/current Town object.
 	 * @return: New town object.
 	 */
-	public static Town updatePlain(Town tOld) {
-		Town tNew = new Town(tOld.getLength(), tOld.getWidth());
+	public static hw1.Town updatePlain(hw1.Town tOld) {
+		hw1.Town tNew = new hw1.Town(tOld.getLength(), tOld.getWidth());
 		//TODO: Write your code here.
 		return tNew;
 	}
@@ -28,7 +27,7 @@ public class ISPBusiness {
 	 * @param town
 	 * @return
 	 */
-	public static int getProfit(Town town) {
+	public static int getProfit(hw1.Town town) {
 
 		return 0;
 	}
@@ -58,7 +57,7 @@ public class ISPBusiness {
 		//TODO: Write your code here.
 		Scanner userInput = new Scanner(System.in);
 		int userGridChoice = 0;
-		Town t1 = new Town(1, 1);
+		hw1.Town t1 = new hw1.Town(1, 1);
 
 		while (true) {
 			System.out.println("How to populate grid (type 1 or 2):\n 1: from a file.\n 2: randomly with seed");
@@ -75,7 +74,7 @@ public class ISPBusiness {
 		if (userGridChoice == 1) {
 			System.out.println("Enter file name:");
 			try {
-				t1 = new Town(userInput.next());
+				t1 = new hw1.Town(userInput.next());
 			} catch (FileNotFoundException ignored) {}
 		} else {
 			System.out.println("Enter: [rows] [columns] [seed]");
@@ -83,7 +82,7 @@ public class ISPBusiness {
 				int rows = userInput.nextInt();
 				int columns = userInput.nextInt();
 				int seed = userInput.nextInt();
-				t1 = new Town(rows, columns);
+				t1 = new hw1.Town(rows, columns);
 				t1.randomInit(seed);
 			} catch (InputMismatchException e) {
 				throw new InputMismatchException();

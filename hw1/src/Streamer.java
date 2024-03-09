@@ -1,11 +1,9 @@
-package hw1;
-
 /**
  * @author Logan Gosch
  */
-public class Streamer extends TownCell {
+public class Streamer extends hw1.TownCell {
 
-    public Streamer(Town p, int r, int c) {
+    public Streamer(hw1.Town p, int r, int c) {
         super(p, r, c);
     }
 
@@ -25,7 +23,7 @@ public class Streamer extends TownCell {
      * @return
      */
     @Override
-    public TownCell next(Town tNew) {
+    public hw1.TownCell next(hw1.Town tNew) {
         if (nCensus[RESELLER] >= 1) {
             return new Outage(tNew, tNew.getLength(), tNew.getWidth());
         } else if (nCensus[OUTAGE] >= 1) {

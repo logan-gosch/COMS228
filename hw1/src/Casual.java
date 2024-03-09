@@ -1,11 +1,9 @@
-package hw1;
-
 /**
  * @author Logan Gosch
  */
-public class Casual extends TownCell {
+public class Casual extends hw1.TownCell {
 
-    public Casual(Town p, int r, int c) {
+    public Casual(hw1.Town p, int r, int c) {
         super(p, r, c);
     }
 
@@ -14,8 +12,8 @@ public class Casual extends TownCell {
      * @return cell state
      */
     @Override
-    public State who() {
-        return State.CASUAL;
+    public hw1.State who() {
+        return hw1.State.CASUAL;
     }
 
     /**
@@ -25,13 +23,13 @@ public class Casual extends TownCell {
      * @return
      */
     @Override
-    public TownCell next(Town tNew) {
+    public hw1.TownCell next(hw1.Town tNew) {
         if (nCensus[RESELLER] >= 1) {
-            return new Outage(tNew, tNew.getLength(), tNew.getWidth());
+            return new hw1.Outage(tNew, tNew.getLength(), tNew.getWidth());
         } else if (nCensus[STREAMER] >= 1) {
-            return new Streamer(tNew, tNew.getLength(), tNew.getWidth());
+            return new hw1.Streamer(tNew, tNew.getLength(), tNew.getWidth());
         } else if (nCensus[OUTAGE] + nCensus[EMPTY] <= 1) {
-            return new Reseller(tNew, tNew.getLength(), tNew.getWidth());
+            return new hw1.Reseller(tNew, tNew.getLength(), tNew.getWidth());
         }
         return new Casual(tNew, tNew.getLength(), tNew.getWidth());
     }

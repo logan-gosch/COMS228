@@ -1,11 +1,8 @@
-package hw1;
-
 /**
  * @author Logan Gosch
  */
-public class Empty extends TownCell {
-
-    public Empty(Town p, int r, int c) {
+public class Outage extends hw1.TownCell {
+    public Outage(hw1.Town p, int r, int c) {
         super(p, r, c);
     }
 
@@ -14,18 +11,18 @@ public class Empty extends TownCell {
      * @return cell state
      */
     @Override
-    public State who() {
-        return State.EMPTY;
+    public hw1.State who() {
+        return hw1.State.OUTAGE;
     }
 
     /**
      * Determines the change of the cell type
-     * based on the specific rules for: EMPTY
+     * based on the specific rules for: OUTAGE
      * @param tNew: town of the next cycle
      * @return
      */
-    @Override
-    public TownCell next(Town tNew) {
+    public hw1.TownCell next(hw1.Town tNew) {
         return null;
     }
+
 }
