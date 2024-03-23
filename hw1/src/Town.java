@@ -1,5 +1,3 @@
-package edu.iastate.cs228.hw1;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.StringReader;
