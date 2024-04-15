@@ -17,23 +17,38 @@ public class Point implements Comparable<Point>
 	{
 		// x and y get default value 0
 	}
-	
+
+	/**
+	 * Constructor for a point with a given x and y
+	 * @param x
+	 * @param y
+	 */
 	public Point(int x, int y)
 	{
 		this.x = x;  
 		this.y = y;   
 	}
-	
+
+	/**
+	 * Copy constructor for Point given another point (deep copy)
+	 * @param p
+	 */
 	public Point(Point p) { // copy constructor
 		x = p.getX();
 		y = p.getY();
 	}
 
+	/**
+	 * @return x
+	 */
 	public int getX()   
 	{
 		return x;
 	}
-	
+
+	/**
+	 * @return y
+	 */
 	public int getY()
 	{
 		return y;
@@ -45,10 +60,14 @@ public class Point implements Comparable<Point>
 	 */
 	public static void setXorY(boolean xORy)
 	{
-		// TODO 
+		Point.xORy = xORy;
 	}
-	
-	
+
+	/**
+	 * Evaluate the values of x and y to determine if they are the same
+	 * @param obj
+	 * @return true or false based on equivalency result
+	 */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -71,8 +90,15 @@ public class Point implements Comparable<Point>
 	 */
 	public int compareTo(Point q)
 	{
-		return 0; 
-		// TODO; 
+		if ((xORy && (this.x < q.x || (this.x == q.x && this.y < q.y))) ||
+				(!xORy && (this.y < q.y || (this.y == q.y && this.x < q.x))))
+		{
+			return -1;
+		} else if (this.equals(q)) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 	
 	
@@ -82,7 +108,7 @@ public class Point implements Comparable<Point>
 	@Override
     public String toString() 
 	{
-		// TODO 
-		return null; 
+		String s = "(" + x + ", " + y + ")";
+		return s;
 	}
 }
